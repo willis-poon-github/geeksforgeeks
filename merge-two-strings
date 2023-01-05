@@ -1,0 +1,39 @@
+#User function Template for python3
+class Solution:
+    def merge(self, S1, S2):
+        # code here
+          # Initialize an empty result string
+          result = ""
+          
+          # Set the length of the shorter string
+          # If one of the strings is empty, set the length to 0
+          length = min(len(S1), len(S2))
+          
+          # Iterate over the characters in the shorter string
+          for i in range(length):
+            # Append the i-th character of S1 to the result string
+            result += S1[i]
+            # Append the i-th character of S2 to the result string
+            result += S2[i]
+          
+          # If S1 is longer than S2, append the remaining characters of S1 to the result string
+          if len(S1) > length:
+            result += S1[length:]
+          # If S2 is longer than S1, append the remaining characters of S2 to the result string
+          elif len(S2) > length:
+            result += S2[length:]
+          
+          return result
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+    t = int(input())
+    for _ in range(t):
+        S1,S2 = map(str,input().strip().split())
+        ob = Solution()
+        print(ob.merge(S1, S2))
+# } Driver Code Ends
