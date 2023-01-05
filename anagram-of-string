@@ -1,0 +1,50 @@
+//User function Template for javascript
+
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @returns {number} 
+ */
+ 
+class Solution {
+    remAnagram(str1, str2){
+        // code here
+        let counter = {};
+        for (const element of [...str1].sort()){
+            if (counter[element]){
+                counter[element] += 1;
+            } else {
+                counter[element] = 1;
+            }
+        }
+        //console.log(counter)
+        let counter2 = {};
+        for (const element of [...str2].sort()){
+            if (counter2[element]){
+                counter2[element] += 1;
+            } else {
+                counter2[element] = 1;
+            }
+        }
+        //console.log(counter2)
+        let counter3 = {};
+        for (const property in counter){
+            if (counter2[property]){
+                counter3[property] = Math.abs(counter[property]-counter2[property]);
+            } else {
+                counter3[property] = counter[property];
+            }
+        }
+        for (const property in counter2){
+            if (!counter[property]){
+                counter3[property] = counter2[property];
+            }
+        }
+        //console.log(counter3)
+        let remove = 0
+        for (const property in counter3){
+            remove += counter3[property]
+        }
+        return remove
+    }
+}
