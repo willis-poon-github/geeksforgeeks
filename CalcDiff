@@ -1,0 +1,28 @@
+// https://practice.geeksforgeeks.org/problems/difficulty-of-sentence5856/1?page=3&difficulty[]=-1&category[]=Strings&sortBy=submissions
+
+function calcDiff (str) {
+    let sum = 0
+    // split string to array
+    let arr = str.split(" ")
+    let diff_arr = 0
+    for (const ele of arr){
+        // check if consonants are more than vowels
+        if ((ele.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length > (ele.match(/[aeiouAEIOU]/g) || []).length 
+        ||
+        //check if it has 4 consecutive consonants
+        (ele.match(/.*[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{4,}.*/g) || []).length > 0
+        ) {
+            //console.log((ele.match(/.*[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{4,}.*/g) || []))
+            diff_arr += 5;
+        } else {
+            diff_arr += 3;
+        }
+    }
+
+
+    return diff_arr
+}
+
+
+console.log(calcDiff("Difficulty ooooffff ab sentenceddddd"))
+console.log(calcDiff("I am good!"))
